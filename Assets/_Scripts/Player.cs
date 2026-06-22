@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    bool _officePlayer = true;
+    static bool _officeMode = true;
     bool _canSwap = true;
     float _swapTimeMax = 2;
     [SerializeField] GameObject _officePlayerGO;
@@ -22,14 +22,14 @@ public class Player : MonoBehaviour
     }
     IEnumerator swapPlayer()
     {
-        _officePlayer = !_officePlayer;
+        _officeMode = !_officeMode;
         if (transform.childCount != 0)
         {
             //there is a child here
             Destroy(transform.GetChild(0).gameObject);
         }
 
-        if (_officePlayer)
+        if (_officeMode)
         {
             Instantiate(_officePlayerGO,transform);
         }
@@ -41,5 +41,10 @@ public class Player : MonoBehaviour
         _canSwap = false;
         yield return new WaitForSeconds(_swapTimeMax);
         _canSwap = true;
+    }
+    public static bool PlayerIsOfficeMode()
+    {
+        if(_officeMode)return true;
+        return false;
     }
 }
