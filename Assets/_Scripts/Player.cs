@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,12 +10,15 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject _officePlayerGO;
     [SerializeField] GameObject _gamePlayerGO;
 
+    public static event EventHandler OnPlayerSwitch;
+
     private void Start()
     {
-        GameInput.OnPlayerTurn += GameInput_OnPlayerTurn;
+        GameInput.OnPlayerTurn += GameInput_OnSpacebarPressed;
+        OnPlayerSwitch?.Invoke(this, EventArgs.Empty);
     }
 
-    private void GameInput_OnPlayerTurn(object sender, System.EventArgs e)
+    private void GameInput_OnSpacebarPressed(object sender, System.EventArgs e)
     {
         if (!_canSwap) return;
         StartCoroutine(swapPlayer());
@@ -23,6 +27,8 @@ public class Player : MonoBehaviour
     IEnumerator swapPlayer()
     {
         _officeMode = !_officeMode;
+
+        OnPlayerSwitch?.Invoke(this, EventArgs.Empty);
         if (transform.childCount != 0)
         {
             //there is a child here
@@ -42,7 +48,7 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(_swapTimeMax);
         _canSwap = true;
     }
-    public static bool PlayerIsOfficeMode()
+    public static bool PlayerInOfficeMode()
     {
         if(_officeMode)return true;
         return false;

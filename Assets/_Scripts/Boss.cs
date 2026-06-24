@@ -1,4 +1,3 @@
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
@@ -15,13 +14,15 @@ public class Boss : MonoBehaviour
     float _minIdleTime = 3;
     float _idleTimer;
 
-    float _maxPatrolTime = 2;
+    float _maxWalkTime = 2;
     float _patrolDirection;
     float t = 0;
     Transform _destinationTransform;
     [SerializeField] Transform _startTransform;
     [SerializeField] Transform _leftTransform;
     [SerializeField] Transform _rightTransform;
+
+    float _checkDuration = 2;
 
     void Start()
     {
@@ -46,16 +47,40 @@ public class Boss : MonoBehaviour
                 break;
             case bossState.patrolling:
                 transform.position = Vector3.Lerp(_startTransform.position, _destinationTransform.position, t);
-                t += Time.deltaTime/_maxPatrolTime;
+                t += Time.deltaTime/_maxWalkTime;
                 if (t > 1)
                 {
+                    t = 0;
                     transform.position = _destinationTransform.position;
                     SetBossState(bossState.peak);
                 }
                 break;
             case bossState.peak:
+                if (Player.PlayerInOfficeMode())
+                {
+                    Debug.Log("Player is in office mode");
+                }
+                else
+                {
+                    Debug.Log("Player is in game mode");
+                }
+                t += Time.deltaTime;
+                if(t>_checkDuration)
+                {
+                    t = 0;
+                    SetBossState(bossState.walkBack);
+                }
+                ;
                 break;
             case bossState.walkBack:
+                transform.position = Vector3.Lerp(_destinationTransform.position, _startTransform.position, t);
+                t += Time.deltaTime / _maxWalkTime;
+                if (t > 1)
+                {
+                    t = 0;
+                    transform.position = _startTransform.position;
+                    SetBossState(bossState.idle);
+                }
                 break;
         }
     }

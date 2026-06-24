@@ -1,9 +1,22 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
 
 public class ArrowGenerator : MonoBehaviour
 {
-    enum arrow
+    public static event EventHandler<OnArrowGeneratedEventArgs> OnArrowListGenerated;
+    public static event EventHandler<OnCorrectArrowPressedEventArgs> OnCorrectArrowPressed;
+    public static event EventHandler OnWrongArrowPressed;
+    public class OnArrowGeneratedEventArgs :EventArgs
+    {
+        public List<arrow> generatedArrowList;
+    }
+    public class OnCorrectArrowPressedEventArgs : EventArgs
+    {
+        public int arrowIndex;
+    }
+
+    public enum arrow
     {
         up,
         down, 
@@ -23,30 +36,36 @@ public class ArrowGenerator : MonoBehaviour
     void Start()
     {
         GameInput.OnArrowPressed += GameInput_OnArrowPressed;
-        GenerateArrowKey();
+        GenerateArrowList();
     }
 
     private void GameInput_OnArrowPressed(object sender, GameInput.OnArrowPressedEventArgs e)
     {
         //allow only when player is in gameMode
-        if (Player.PlayerIsOfficeMode() == true) return;
+        if (Player.PlayerInOfficeMode() == true) return;
 
         arrow pressedArrowKey = arrow.up;
         
         if(e.arrowDir == Vector2.up) pressedArrowKey = arrow.up;
         else if(e.arrowDir == Vector2.down) pressedArrowKey = arrow.down;
         else if(e.arrowDir == Vector2.left) pressedArrowKey = arrow.left;
-        else if (e.arrowDir == Vector2.right) pressedArrowKey = arrow.right;
+        else pressedArrowKey = arrow.right;
 
         if (pressedArrowKey != _currentArrow)
         {
             Debug.Log("wrong key pressed");
+            OnWrongArrowPressed?.Invoke(this, EventArgs.Empty);
             _currentArrow = _arrowList[0];
             _currentArrowIndex = 0; 
             return;
         }
 
         Debug.Log("Correct key pressed");
+        OnCorrectArrowPressed?.Invoke(this, new OnCorrectArrowPressedEventArgs
+        {
+            arrowIndex = _currentArrowIndex,
+        });
+
         _currentArrowIndex++;
         Debug.Log(_currentArrowIndex);
 
@@ -54,20 +73,25 @@ public class ArrowGenerator : MonoBehaviour
         {
             //finished this arrow set generate a new one 
             _arrowList.Clear();
-            GenerateArrowKey();
+            GenerateArrowList();
             return;
         }
         _currentArrow = _arrowList[_currentArrowIndex];
     }
 
-    public void GenerateArrowKey()
+    public void GenerateArrowList()
     {
         for (int i = 0; i < _maxArrows; i++)
         {
-            _arrowList.Add((arrow)Random.Range(0, 4));
+            arrow generatedArrow = (arrow)UnityEngine.Random.Range(0, 4);
+            _arrowList.Add(generatedArrow);
         }
         _currentArrow = _arrowList[0];
         _currentArrowIndex = 0;
+        OnArrowListGenerated?.Invoke(this, new OnArrowGeneratedEventArgs
+        {
+            generatedArrowList = _arrowList,
+        });
         Debug.Log(_currentArrow);
     }
 }
