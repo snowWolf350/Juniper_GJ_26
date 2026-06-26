@@ -21,27 +21,23 @@ public class Player : MonoBehaviour
     private void GameInput_OnSpacebarPressed(object sender, System.EventArgs e)
     {
         if (!_canSwap) return;
+        if(GameManager.Instance.GameIsPlaying() == false) return;   
         StartCoroutine(swapPlayer());
-        Debug.Log("Player turned");
     }
     IEnumerator swapPlayer()
     {
         _officeMode = !_officeMode;
 
         OnPlayerSwitch?.Invoke(this, EventArgs.Empty);
-        if (transform.childCount != 0)
-        {
-            //there is a child here
-            Destroy(transform.GetChild(0).gameObject);
-        }
-
         if (_officeMode)
         {
-            Instantiate(_officePlayerGO,transform);
+            _officePlayerGO.SetActive(true);
+            _gamePlayerGO.SetActive(false);
         }
         else
         {
-            Instantiate(_gamePlayerGO,transform); 
+            _officePlayerGO.SetActive(false);
+            _gamePlayerGO.SetActive(true);
         }
 
         _canSwap = false;

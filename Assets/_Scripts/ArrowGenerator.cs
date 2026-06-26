@@ -43,6 +43,7 @@ public class ArrowGenerator : MonoBehaviour
     {
         //allow only when player is in gameMode
         if (Player.PlayerInOfficeMode() == true) return;
+        if(GameManager.Instance.GameIsPlaying() == false) return;
 
         arrow pressedArrowKey = arrow.up;
         

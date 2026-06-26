@@ -58,11 +58,11 @@ public class Boss : MonoBehaviour
             case bossState.peak:
                 if (Player.PlayerInOfficeMode())
                 {
-                    Debug.Log("Player is in office mode");
+                    //let go 
                 }
                 else
                 {
-                    Debug.Log("Player is in game mode");
+                    //catch player
                 }
                 t += Time.deltaTime;
                 if(t>_checkDuration)
