@@ -8,7 +8,15 @@ public class WinScreenUI : MonoBehaviour
     void Start()
     {
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
+        Boss.OnPlayerCaught += Boss_OnPlayerCaught;
         Hide();
+    }
+    private void Boss_OnPlayerCaught(object sender, System.EventArgs e)
+    {
+        Debug.Log("event sent");
+        Show();
+        _titleText.text = "Too bad ! you got caught, better luck next time";
+        _scoreText.text = "Score : " + Score.GetScore().ToString();
     }
 
     private void GameManager_OnGameStateChanged(object sender, System.EventArgs e)
@@ -19,16 +27,11 @@ public class WinScreenUI : MonoBehaviour
             _titleText.text = "Congragulations ! You played games at work without Getting caught";
             _scoreText.text = "Score : " + Score.GetScore().ToString();
         }
-        else if (GameManager.Instance.GameIsCaught())
-        {
-            Show();
-            _titleText.text = "Too bad ! you got caught, better luck next time";
-            _scoreText.text = "Score : " + Score.GetScore().ToString();
-        }
-        else
-        {
-            Hide();
-        }
+    }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGameStateChanged -= GameManager_OnGameStateChanged;
+        Boss.OnPlayerCaught -= Boss_OnPlayerCaught;
     }
     void Show()
     {

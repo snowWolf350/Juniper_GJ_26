@@ -34,6 +34,10 @@ public class PauseUI : MonoBehaviour
         GameManager.Instance.OnGameStateChanged += Instance_OnGameStateChanged;
         Hide();
     }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGameStateChanged -= Instance_OnGameStateChanged;
+    }
 
     private void Instance_OnGameStateChanged(object sender, EventArgs e)
     {

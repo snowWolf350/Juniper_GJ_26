@@ -15,6 +15,10 @@ public class CountDownUI : MonoBehaviour
         animator = GetComponent<Animator>();
         
     }
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGameStateChanged -= Instance_OnGameStateChanged;
+    }
 
     private void Update()
     {

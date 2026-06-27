@@ -16,6 +16,11 @@ public class Score : MonoBehaviour
         ArrowGenerator.OnCorrectArrowPressed += ArrowGenerator_OnCorrectArrowPressed;
         ArrowGenerator.OnArrowListGenerated += ArrowGenerator_OnArrowListGenerated;
     }
+    private void OnDestroy()
+    {
+        ArrowGenerator.OnCorrectArrowPressed -= ArrowGenerator_OnCorrectArrowPressed;
+        ArrowGenerator.OnArrowListGenerated -= ArrowGenerator_OnArrowListGenerated;
+    }
 
     private void ArrowGenerator_OnArrowListGenerated(object sender, ArrowGenerator.OnArrowGeneratedEventArgs e)
     {

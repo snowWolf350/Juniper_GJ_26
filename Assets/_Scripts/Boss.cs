@@ -1,8 +1,9 @@
+using System;
 using UnityEngine;
 
 public class Boss : MonoBehaviour
 {
-    
+    public static event EventHandler OnPlayerCaught;
     enum bossState
     {
         idle,patrolling,peak,walkBack
@@ -31,6 +32,7 @@ public class Boss : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance.GameIsPlaying() == false) return;
         switch (_currentBossState)
         {
             case bossState.idle:
@@ -60,6 +62,7 @@ public class Boss : MonoBehaviour
                 {
                     //catch him 
                     GameManager.Instance.SetGameState(GameManager.gameState.caught);
+                    OnPlayerCaught?.Invoke(this,EventArgs.Empty);
                 }
                 t += Time.deltaTime;
                 if(t>_checkDuration)
@@ -87,11 +90,11 @@ public class Boss : MonoBehaviour
         _currentBossState=bossState;
         if (bossState == bossState.idle)
         {
-            _idleTimer = Random.Range(_minIdleTime, _maxIdleTime);
+            _idleTimer = UnityEngine.Random.Range(_minIdleTime, _maxIdleTime);
         }
         else if (bossState == bossState.patrolling)
         {
-            _patrolDirection = Random.Range(0, 2);
+            _patrolDirection = UnityEngine.Random.Range(0, 2);
             if(_patrolDirection == 0)
                 _destinationTransform = _leftTransform;
             else

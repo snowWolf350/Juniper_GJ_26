@@ -65,9 +65,19 @@ public class ArrowContainerUI : MonoBehaviour
         foreach (ArrowGenerator.arrow arrow in e.generatedArrowList)
         {
             GameObject arrowUI = Instantiate(_arrowTemplate, transform);
+            if(Player.PlayerInOfficeMode() == false)
             arrowUI.SetActive(true);
 
             arrowUI.GetComponent<ArrowTemplateUI>().SetArrow(arrow);
         }
     }
+
+    private void OnDestroy()
+    {
+        ArrowGenerator.OnArrowListGenerated -= ArrowGenerator_OnArrowListGenerated;
+        ArrowGenerator.OnCorrectArrowPressed -= ArrowGenerator_OnCorrectArrowPressed;
+        ArrowGenerator.OnWrongArrowPressed -= ArrowGenerator_OnWrongArrowPressed;
+        Player.OnPlayerSwitch -= Player_OnPlayerSwitch;
+    }
+
 }

@@ -15,7 +15,7 @@ public class ArrowGenerator : MonoBehaviour
     {
         public int arrowIndex;
     }
-
+    [Serializable]
     public enum arrow
     {
         up,
@@ -35,6 +35,7 @@ public class ArrowGenerator : MonoBehaviour
     }
     void Start()
     {
+        _arrowList.Clear();
         GameInput.OnArrowPressed += GameInput_OnArrowPressed;
         GenerateArrowList();
     }
@@ -54,14 +55,11 @@ public class ArrowGenerator : MonoBehaviour
 
         if (pressedArrowKey != _currentArrow)
         {
-            Debug.Log("wrong key pressed");
             OnWrongArrowPressed?.Invoke(this, EventArgs.Empty);
             _currentArrow = _arrowList[0];
             _currentArrowIndex = 0; 
             return;
         }
-
-        Debug.Log("Correct key pressed");
         OnCorrectArrowPressed?.Invoke(this, new OnCorrectArrowPressedEventArgs
         {
             arrowIndex = _currentArrowIndex,
@@ -93,6 +91,10 @@ public class ArrowGenerator : MonoBehaviour
         {
             generatedArrowList = _arrowList,
         });
-        Debug.Log(_currentArrow);
+    }
+
+    private void OnDisable()
+    {
+        GameInput.OnArrowPressed -= GameInput_OnArrowPressed;
     }
 }

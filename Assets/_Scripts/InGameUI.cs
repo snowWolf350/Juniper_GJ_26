@@ -24,7 +24,10 @@ public class InGameUI : MonoBehaviour
     {
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
     }
-
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnGameStateChanged -= GameManager_OnGameStateChanged;
+    }
     private void GameManager_OnGameStateChanged(object sender, EventArgs e)
     {
         if (GameManager.Instance.GameIsPlaying())

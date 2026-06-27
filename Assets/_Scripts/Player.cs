@@ -16,11 +16,22 @@ public class Player : MonoBehaviour
     public static event EventHandler OnPlayerSwitch;
 
     Animator _animator;
-
-    private void Start()
+    private void Awake()
+    {
+        _officeMode = true;
+    }
+    private void OnEnable()
     {
         GameInput.OnPlayerTurn += GameInput_OnSpacebarPressed;
-        OnPlayerSwitch?.Invoke(this, EventArgs.Empty);
+    }
+
+    private void OnDisable()
+    {
+        GameInput.OnPlayerTurn -= GameInput_OnSpacebarPressed;
+    }
+    private void Start()
+    {
+
         _animator = GetComponent<Animator>();
     }
 
@@ -32,6 +43,7 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(_officeMode);
         if (!_canSwap)
         {
             //player just swapped
