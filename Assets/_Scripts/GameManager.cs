@@ -1,6 +1,7 @@
 using System;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,9 +10,14 @@ public class GameManager : MonoBehaviour
     public event EventHandler OnGameStateChanged;
 
     float _countDownTimer = 3.4f;
+
+    float _gameTimeMax = 180;
+    float _gameTimer;
+    [SerializeField] Image _countDownImage;
+
     public enum gameState
     {
-        countDown,playing,paused,caught,end
+        countDown,playing,paused,caught,won
     }
 
     gameState _currentGameState = gameState.countDown;
@@ -24,6 +30,7 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         Time.timeScale = 1.0f;
+        _gameTimer = _gameTimeMax;
     }
 
     private void Update()
@@ -37,12 +44,19 @@ public class GameManager : MonoBehaviour
                     SetGameState(gameState.playing);
                 break;
             case gameState.playing:
+                _gameTimer -= Time.deltaTime;
+
+                _countDownImage.fillAmount = _gameTimer / _gameTimeMax;
+
+                if(_gameTimer <0)
+                    SetGameState(gameState.won);
                 break;
             case gameState.paused:
                 break;
             case gameState.caught:
                 break;
-            case gameState.end:
+            case gameState.won:
+
                 break;
         }
     }
@@ -66,7 +80,14 @@ public class GameManager : MonoBehaviour
     {
         return _countDownTimer;
     }
-
+    public bool GameIsWon()
+    {
+        return _currentGameState == gameState.won;
+    }
+    public bool GameIsCaught()
+    {
+        return _currentGameState == gameState.caught;
+    }
     public bool GameIsPaused()
     {
         return _currentGameState == gameState.paused;

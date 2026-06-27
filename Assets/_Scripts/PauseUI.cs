@@ -46,7 +46,20 @@ public class PauseUI : MonoBehaviour
             Hide();
         }
     }
+    public void RetryButton()
+    {
+        SceneLoader.LoadGame();
+    }
 
+    public void MainMenuButton()
+    {
+        SceneLoader.LoadMainMenu();
+    }
+
+    public void QuitButton()
+    {
+        Application.Quit();
+    }
     void Show()
     {
         gameObject.SetActive(true);

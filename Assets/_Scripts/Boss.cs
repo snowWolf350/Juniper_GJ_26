@@ -56,13 +56,10 @@ public class Boss : MonoBehaviour
                 }
                 break;
             case bossState.peak:
-                if (Player.PlayerInOfficeMode())
+                if (Player.PlayerInOfficeMode() == false)
                 {
-                    //let go 
-                }
-                else
-                {
-                    //catch player
+                    //catch him 
+                    GameManager.Instance.SetGameState(GameManager.gameState.caught);
                 }
                 t += Time.deltaTime;
                 if(t>_checkDuration)
