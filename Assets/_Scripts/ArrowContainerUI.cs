@@ -26,7 +26,10 @@ public class ArrowContainerUI : MonoBehaviour
 
     private void ArrowGenerator_OnCorrectArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
     {
-        transform.GetChild(e.arrowIndex + 1).GetComponent<ArrowTemplateUI>().SetArrowStatus(Color.green);
+        Transform arrowTransform = transform.GetChild(e.arrowIndex + 1);
+        arrowTransform.GetComponent<ArrowTemplateUI>().SetArrowStatus(Color.green);
+        arrowTransform.GetComponent<Animator>().SetTrigger("Key");
+
     }
 
     private void Player_OnPlayerSwitch(object sender, System.EventArgs e)

@@ -13,7 +13,6 @@ public class WinScreenUI : MonoBehaviour
     }
     private void Boss_OnPlayerCaught(object sender, System.EventArgs e)
     {
-        Debug.Log("event sent");
         Show();
         _titleText.text = "Too bad ! you got caught, better luck next time";
         _scoreText.text = "Score : " + Score.GetScore().ToString();

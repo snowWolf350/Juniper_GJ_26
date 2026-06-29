@@ -1076,6 +1076,7 @@ MonoBehaviour:
   _inGameUIGO: {fileID: 335797322}
   _pauseUIGO: {fileID: 1320515581}
   _pauseButton: {fileID: 1942185909}
+  _scoreAnimator: {fileID: 635512418}
 --- !u!1 &342180557
 GameObject:
   m_ObjectHideFlags: 0
@@ -2159,6 +2160,7 @@ GameObject:
   - component: {fileID: 635512415}
   - component: {fileID: 635512417}
   - component: {fileID: 635512416}
+  - component: {fileID: 635512418}
   m_Layer: 5
   m_Name: ScoreText
   m_TagString: Untagged
@@ -2176,7 +2178,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1825575987}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2285,6 +2287,28 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 635512414}
   m_CullTransparentMesh: 1
+--- !u!95 &635512418
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635512414}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4ed1435247f304c44af481d1b67a1c0e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &637262558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3114,7 +3138,7 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: 10fc4df2da32a41aaa32d77bc913491c, type: 2}
+  sharedProfile: {fileID: 11400000, guid: d22a5e14f4758d943bc0c7bfd646fa41, type: 2}
 --- !u!4 &832575519
 Transform:
   m_ObjectHideFlags: 0
@@ -3601,6 +3625,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1068437661}
   - component: {fileID: 1068437662}
+  - component: {fileID: 1068437663}
   m_Layer: 5
   m_Name: arrowTemplate
   m_TagString: Untagged
@@ -3647,6 +3672,28 @@ MonoBehaviour:
   _downSprite: {fileID: 1055266489, guid: 1b2b3827d456a4f41999a50d0eff8641, type: 3}
   _leftSprite: {fileID: -1109418987, guid: 1b2b3827d456a4f41999a50d0eff8641, type: 3}
   _rightSprite: {fileID: 194648509, guid: 1b2b3827d456a4f41999a50d0eff8641, type: 3}
+--- !u!95 &1068437663
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1068437660}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bece8fd5f8b3f4f438d6efd04f83d8e1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1082599149
 GameObject:
   m_ObjectHideFlags: 0

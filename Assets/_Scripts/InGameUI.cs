@@ -11,11 +11,12 @@ public class InGameUI : MonoBehaviour
 
     [SerializeField] Button _pauseButton;
 
+    [SerializeField] Animator _scoreAnimator;
+
     private void Awake()
     {
         _pauseButton.onClick.AddListener(() =>
         {
-            Debug.Log("Paused");
             GameManager.Instance.SetGameState(GameManager.gameState.paused);
             Hide();
         });
@@ -23,7 +24,14 @@ public class InGameUI : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnGameStateChanged += GameManager_OnGameStateChanged;
+        ArrowGenerator.OnCorrectArrowPressed += ArrowGenerator_OnCorrectArrowPressed;
     }
+
+    private void ArrowGenerator_OnCorrectArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
+    {
+        _scoreAnimator.SetTrigger("scored");
+    }
+
     private void OnDestroy()
     {
         GameManager.Instance.OnGameStateChanged -= GameManager_OnGameStateChanged;

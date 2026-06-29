@@ -23,16 +23,25 @@ public class Player : MonoBehaviour
     private void OnEnable()
     {
         GameInput.OnPlayerTurn += GameInput_OnSpacebarPressed;
+        GameInput.OnArrowPressed += GameInput_OnArrowPressed;
     }
 
     private void OnDisable()
     {
         GameInput.OnPlayerTurn -= GameInput_OnSpacebarPressed;
+        GameInput.OnArrowPressed -= GameInput_OnArrowPressed;
     }
     private void Start()
     {
 
         _animator = GetComponent<Animator>();
+    }
+
+    private void GameInput_OnArrowPressed(object sender, GameInput.OnArrowPressedEventArgs e)
+    {
+        if (_officeMode) return;
+
+        _animator.SetTrigger("squish");
     }
 
     private void GameInput_OnSpacebarPressed(object sender, System.EventArgs e)
@@ -43,7 +52,6 @@ public class Player : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(_officeMode);
         if (!_canSwap)
         {
             //player just swapped

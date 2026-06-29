@@ -64,9 +64,7 @@ public class ArrowGenerator : MonoBehaviour
         {
             arrowIndex = _currentArrowIndex,
         });
-
         _currentArrowIndex++;
-        Debug.Log(_currentArrowIndex);
 
         if (_currentArrowIndex >= _maxArrows)
         {
