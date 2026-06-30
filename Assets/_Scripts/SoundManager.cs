@@ -22,17 +22,16 @@ public class SoundManager : MonoBehaviour
         Boss.OnPlayerCaught += Boss_OnPlayerCaught;
     }
 
-    private void Boss_OnPlayerCaught(object sender, System.EventArgs e)
-    {
-        _audioSource.PlayOneShot(_CaughtSound,1f);
-    }
-
-    private void ArrowGenerator_OnWrongArrowPressed(object sender, System.EventArgs e)
+    private void ArrowGenerator_OnWrongArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
     {
         _audioSource.PlayOneShot(_wrongKeySound);
     }
 
-    private void ArrowGenerator_OnCorrectArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
+    private void Boss_OnPlayerCaught(object sender, System.EventArgs e)
+    {
+        _audioSource.PlayOneShot(_CaughtSound,1f);
+    }
+        private void ArrowGenerator_OnCorrectArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
     {
         _audioSource.PlayOneShot(_correctKeySound, 1.2f);
     }

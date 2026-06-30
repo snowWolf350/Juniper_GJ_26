@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] GameObject _officePlayerGO;
     [SerializeField] GameObject _gamePlayerGO;
     [SerializeField] Image _swapTiemrImage;
+    [SerializeField] ParticleSystem _starParticles;
 
     public static event EventHandler OnPlayerSwitch;
 
@@ -68,6 +69,7 @@ public class Player : MonoBehaviour
 
     IEnumerator swapPlayer()
     {
+        _starParticles.Play();
         _animator.SetTrigger("spin");
 
         yield return new WaitForSeconds(0.3f);

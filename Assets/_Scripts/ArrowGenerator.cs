@@ -6,7 +6,7 @@ public class ArrowGenerator : MonoBehaviour
 {
     public static event EventHandler<OnArrowGeneratedEventArgs> OnArrowListGenerated;
     public static event EventHandler<OnCorrectArrowPressedEventArgs> OnCorrectArrowPressed;
-    public static event EventHandler OnWrongArrowPressed;
+    public static event EventHandler<OnCorrectArrowPressedEventArgs> OnWrongArrowPressed;
     public class OnArrowGeneratedEventArgs :EventArgs
     {
         public List<arrow> generatedArrowList;
@@ -55,7 +55,10 @@ public class ArrowGenerator : MonoBehaviour
 
         if (pressedArrowKey != _currentArrow)
         {
-            OnWrongArrowPressed?.Invoke(this, EventArgs.Empty);
+            OnWrongArrowPressed?.Invoke(this, new OnCorrectArrowPressedEventArgs
+            {
+                arrowIndex = _currentArrowIndex,
+            });
             _currentArrow = _arrowList[0];
             _currentArrowIndex = 0; 
             return;

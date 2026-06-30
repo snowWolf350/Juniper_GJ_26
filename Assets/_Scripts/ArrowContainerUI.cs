@@ -12,7 +12,7 @@ public class ArrowContainerUI : MonoBehaviour
         Player.OnPlayerSwitch += Player_OnPlayerSwitch;
     }
 
-    private void ArrowGenerator_OnWrongArrowPressed(object sender, System.EventArgs e)
+    private void ArrowGenerator_OnWrongArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
     {
         foreach (Transform child in transform)
         {
