@@ -2946,6 +2946,7 @@ GameObject:
   - component: {fileID: 749369736}
   - component: {fileID: 749369735}
   - component: {fileID: 749369738}
+  - component: {fileID: 749369739}
   m_Layer: 5
   m_Name: Play
   m_TagString: Untagged
@@ -3070,6 +3071,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.70980394}
   m_EffectDistance: {x: 10.83, y: -15.16}
   m_UseGraphicAlpha: 1
+--- !u!114 &749369739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 749369733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1001 &780571779
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4827,6 +4840,7 @@ GameObject:
   - component: {fileID: 1445994159}
   - component: {fileID: 1445994158}
   - component: {fileID: 1445994161}
+  - component: {fileID: 1445994162}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -4951,6 +4965,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.70980394}
   m_EffectDistance: {x: 10.83, y: -15.16}
   m_UseGraphicAlpha: 1
+--- !u!114 &1445994162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1445994156}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1 &1449887476
 GameObject:
   m_ObjectHideFlags: 0
@@ -5180,6 +5206,7 @@ GameObject:
   - component: {fileID: 1475749949}
   - component: {fileID: 1475749948}
   - component: {fileID: 1475749951}
+  - component: {fileID: 1475749952}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -5304,6 +5331,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.70980394}
   m_EffectDistance: {x: 10.83, y: -15.16}
   m_UseGraphicAlpha: 1
+--- !u!114 &1475749952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1475749946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1 &1568787179
 GameObject:
   m_ObjectHideFlags: 0
@@ -10581,6 +10620,7 @@ GameObject:
   - component: {fileID: 1749618520}
   - component: {fileID: 1749618519}
   - component: {fileID: 1749618518}
+  - component: {fileID: 1749618521}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -10701,6 +10741,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1749618516}
   m_CullTransparentMesh: 1
+--- !u!114 &1749618521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1749618516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1 &1770070322
 GameObject:
   m_ObjectHideFlags: 0
@@ -10850,6 +10902,7 @@ GameObject:
   - component: {fileID: 1779219896}
   - component: {fileID: 1779219895}
   - component: {fileID: 1779219894}
+  - component: {fileID: 1779219897}
   m_Layer: 5
   m_Name: Retry
   m_TagString: Untagged
@@ -10970,6 +11023,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779219892}
   m_CullTransparentMesh: 1
+--- !u!114 &1779219897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1779219892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1 &1789724867
 GameObject:
   m_ObjectHideFlags: 0
@@ -10982,6 +11047,7 @@ GameObject:
   - component: {fileID: 1789724871}
   - component: {fileID: 1789724870}
   - component: {fileID: 1789724869}
+  - component: {fileID: 1789724872}
   m_Layer: 5
   m_Name: MainMenu
   m_TagString: Untagged
@@ -11102,6 +11168,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1789724867}
   m_CullTransparentMesh: 1
+--- !u!114 &1789724872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1789724867}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!4 &1818714997 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7041118727110599346, guid: f1b07cbce72199742b161b63eb94a2d0, type: 3}
@@ -11388,6 +11466,7 @@ GameObject:
   - component: {fileID: 1942185910}
   - component: {fileID: 1942185909}
   - component: {fileID: 1942185912}
+  - component: {fileID: 1942185913}
   m_Layer: 5
   m_Name: PauseButton
   m_TagString: Untagged
@@ -11511,6 +11590,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.70980394}
   m_EffectDistance: {x: 4.83, y: -6.6}
   m_UseGraphicAlpha: 1
+--- !u!114 &1942185913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1942185907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1001 &1957524693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11660,6 +11751,7 @@ GameObject:
   - component: {fileID: 1987109241}
   - component: {fileID: 1987109240}
   - component: {fileID: 1987109243}
+  - component: {fileID: 1987109244}
   m_Layer: 5
   m_Name: Quit
   m_TagString: Untagged
@@ -11784,6 +11876,18 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.70980394}
   m_EffectDistance: {x: 10.83, y: -15.16}
   m_UseGraphicAlpha: 1
+--- !u!114 &1987109244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987109238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdf0d717f0a580343bf2a871efb332cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ButtonHoverUi
 --- !u!1 &2031892026
 GameObject:
   m_ObjectHideFlags: 0
@@ -12471,10 +12575,6 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8996070061232912178, guid: d20ae35818bacd94d9742a0e857ae4ba, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: 7f6569379ce3caf4d964f904f83cfcb7, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -12598,10 +12698,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: boss (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9070205370677197824, guid: e7fb04ee034429e49ab13c79e9665f3a, type: 3}
-      propertyPath: 'm_Materials.Array.data[0]'
-      value: 
-      objectReference: {fileID: 2100000, guid: b3d4e6d3a816480468dc18337489ea44, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
