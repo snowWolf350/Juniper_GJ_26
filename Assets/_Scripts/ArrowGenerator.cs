@@ -4,6 +4,7 @@ using System;
 
 public class ArrowGenerator : MonoBehaviour
 {
+
     public static event EventHandler<OnArrowGeneratedEventArgs> OnArrowListGenerated;
     public static event EventHandler<OnCorrectArrowPressedEventArgs> OnCorrectArrowPressed;
     public static event EventHandler<OnCorrectArrowPressedEventArgs> OnWrongArrowPressed;
@@ -63,6 +64,7 @@ public class ArrowGenerator : MonoBehaviour
             _currentArrowIndex = 0; 
             return;
         }
+
         OnCorrectArrowPressed?.Invoke(this, new OnCorrectArrowPressedEventArgs
         {
             arrowIndex = _currentArrowIndex,

@@ -4,6 +4,7 @@ public class ArrowContainerUI : MonoBehaviour
 {
     [SerializeField] GameObject _arrowTemplate;
 
+    [SerializeField] GameObject _particleGO;
     private void Start()
     {
         ArrowGenerator.OnArrowListGenerated += ArrowGenerator_OnArrowListGenerated;
@@ -27,6 +28,11 @@ public class ArrowContainerUI : MonoBehaviour
     private void ArrowGenerator_OnCorrectArrowPressed(object sender, ArrowGenerator.OnCorrectArrowPressedEventArgs e)
     {
         Transform arrowTransform = transform.GetChild(e.arrowIndex + 1);
+
+        GameObject ScoreParticle = Instantiate(_particleGO, transform.parent);
+        ScoreParticle.SetActive(true);
+        ScoreParticle.GetComponent<RectTransform>().position = arrowTransform.position;
+
         arrowTransform.GetComponent<ArrowTemplateUI>().SetArrowStatus(Color.green);
         arrowTransform.GetComponent<Animator>().SetTrigger("Key");
 
